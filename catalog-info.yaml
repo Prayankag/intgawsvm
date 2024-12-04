@@ -1,0 +1,44 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: intgawsvm
+  description: provision EC2 server for dev environment
+spec:
+  owner: 
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: intgawsvm
+  description: provision EC2 server for dev environment
+  annotations:
+     backstage.io/techdocs-ref: dir:./docs
+     github.com/project-slug: prayankag/intgawsvm
+     github-actions: enabled
+     github.com/workflows: |
+      [
+        {
+          "workflow": "instance.yaml",
+          "label": "Start",
+          "tooltip": "click here and start the workflow process"
+        }
+      ]
+spec:
+  type: service
+  owner: 
+  lifecycle: experimental
+  system: intgawsvm
+  providesApis:
+    - intgawsvm
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: intgawsvm
+  description: provision EC2 server for dev environment
+spec:
+  type: internal
+  lifecycle: experimental
+  owner: 
+  system: intgawsvm
+  definition: "provision EC2 server for dev environment"
